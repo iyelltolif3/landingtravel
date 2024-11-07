@@ -1,0 +1,61 @@
+---
+---
+<nav class="bg-white dark:bg-gray-800 shadow-lg fixed w-full top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex justify-between h-16">
+      <div class="flex items-center">
+        <a href="/" class="flex-shrink-0 flex items-center">
+          <img class="h-8 w-auto" src="/mapfre-logo.svg" alt="MAPFRE Logo" />
+        </a>
+        <div class="hidden md:ml-6 md:flex md:space-x-8">
+          <a href="/" class="text-mapfre-red dark:text-white px-3 py-2 text-sm font-medium">
+            Home
+          </a>
+          <a href="/coverage" class="text-gray-700 dark:text-gray-300 hover:text-mapfre-red dark:hover:text-white px-3 py-2 text-sm font-medium">
+            Coverage
+          </a>
+          <a href="/claims" class="text-gray-700 dark:text-gray-300 hover:text-mapfre-red dark:hover:text-white px-3 py-2 text-sm font-medium">
+            Claims
+          </a>
+          <a href="/contact" class="text-gray-700 dark:text-gray-300 hover:text-mapfre-red dark:hover:text-white px-3 py-2 text-sm font-medium">
+            Contact
+          </a>
+        </div>
+      </div>
+      <div class="flex items-center">
+        <button id="mobileMenuButton" class="md:hidden p-2 rounded-md text-gray-700 dark:text-gray-300">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Mobile menu -->
+  <div class="md:hidden hidden" id="mobileMenu">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      <a href="/" class="block px-3 py-2 text-base font-medium text-mapfre-red dark:text-white">
+        Home
+      </a>
+      <a href="/coverage" class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300">
+        Coverage
+      </a>
+      <a href="/claims" class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300">
+        Claims
+      </a>
+      <a href="/contact" class="block px-3 py-2 text-base font-medium text-gray-700 dark:text-gray-300">
+        Contact
+      </a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const mobileMenuButton = document.getElementById('mobileMenuButton');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>

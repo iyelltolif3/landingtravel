@@ -1,0 +1,63 @@
+---
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import SEOTags from '../components/SEOTags.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { 
+  title, 
+  description = "Protect your journey with MAPFRE's comprehensive travel insurance. Get instant quotes and worldwide coverage."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <SEOTags title={title} description={description} />
+    
+    <!-- Google Analytics -->
+    <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXX');
+    </script>
+  </head>
+  <body class="dark:bg-gray-900 bg-white transition-colors duration-300">
+    <Navigation />
+    <div class="pt-16"> <!-- Add padding for fixed navbar -->
+      <ThemeToggle />
+      <slot />
+    </div>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --mapfre-red: #E31D1A;
+  }
+  html {
+    font-family: system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+  body {
+    min-height: 100vh;
+  }
+</style>
+
+<script>
+  // Check for saved theme preference or default to dark mode
+  const theme = localStorage.getItem('theme') || 'dark';
+  document.documentElement.classList.toggle('dark', theme === 'dark');
+</script>

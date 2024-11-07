@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getLangFromUrl, useTranslations } from '../utils/i18n';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout title="MAPFRE Travel Insurance">
+  <main class="container mx-auto px-4 py-8">
+    <header class="text-center mb-16">
+      <h1 class="text-4xl md:text-6xl font-bold text-mapfre-red dark:text-white mb-4">
+        {t('hero.title')}
+      </h1>
+      <p class="text-xl dark:text-gray-300 text-gray-700">
+        {t('hero.subtitle')}
+      </p>
+    </header>
+
+    <section class="grid md:grid-cols-2 gap-8 mb-16">
+      <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold text-mapfre-red dark:text-white mb-4">
+          {t('why.title')}
+        </h2>
+        <ul class="space-y-4 dark:text-gray-300 text-gray-700">
+          <li class="flex items-center">
+            <svg class="w-6 h-6 mr-2 text-mapfre-red" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+            </svg>
+            {t('why.assistance')}
+          </li>
+          <li class="flex items-center">
+            <svg class="w-6 h-6 mr-2 text-mapfre-red" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+            </svg>
+            {t('why.medical')}
+          </li>
+          <li class="flex items-center">
+            <svg class="w-6 h-6 mr-2 text-mapfre-red" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/>
+            </svg>
+            {t('why.cancellation')}
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-mapfre-red p-8 rounded-lg shadow-lg text-white">
+        <h2 class="text-2xl font-bold mb-4">{t('quote.title')}</h2>
+        <form class="space-y-4">
+          <div>
+            <label class="block mb-2">{t('quote.destination')}</label>
+            <input
+              type="text"
+              class="w-full p-2 rounded bg-white/10 border border-white/20 focus:outline-none focus:border-white"
+              placeholder={t('quote.destination')}
+            />
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block mb-2">{t('quote.departure')}</label>
+              <input
+                type="date"
+                class="w-full p-2 rounded bg-white/10 border border-white/20 focus:outline-none focus:border-white"
+              />
+            </div>
+            <div>
+              <label class="block mb-2">{t('quote.return')}</label>
+              <input
+                type="date"
+                class="w-full p-2 rounded bg-white/10 border border-white/20 focus:outline-none focus:border-white"
+              />
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-white text-mapfre-red font-bold py-2 px-4 rounded hover:bg-gray-100 transition-colors"
+          >
+            {t('quote.calculate')}
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,37 @@
+---
+import { languages } from '../i18n/ui';
+import { getLangFromUrl } from '../utils/i18n';
+
+const currentLang = getLangFromUrl(Astro.url);
+const currentPath = Astro.url.pathname;
+
+const pathnameWithoutLang = currentPath.replace(/^\/(en|es)/, '') || '/';
+---
+
+<div class="relative inline-block text-left">
+  <select
+    id="language-select"
+    class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-mapfre-red focus:border-mapfre-red sm:text-sm rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+  >
+    {
+      Object.entries(languages).map(([lang, label]) => {
+        const path = lang === 'en' ? pathnameWithoutLang : `/${lang}${pathnameWithoutLang}`;
+        return (
+          <option value={path} selected={currentLang === lang}>
+            {label}
+          </option>
+        );
+      })
+    }
+  </select>
+</div>
+
+<script>
+  const languageSelect = document.getElementById('language-select') as HTMLSelectElement;
+  
+  languageSelect?.addEventListener('change', (e) => {
+    const target = e.target as HTMLSelectElement;
+    const newPath = target.value;
+    window.location.pathname = newPath;
+  });
+</script>
